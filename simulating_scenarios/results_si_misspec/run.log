@@ -1,0 +1,72 @@
+Mode: FULL | I0 = 2000 | n_sim = 100 | cores = 11 | output: results_si_misspec/
+EpiLPS data: negative binomial, rho = 20
+Simulated 100 epidemics per data set with the TRUE SI (mean 7.50, sd 3.40)
+
+Assumed SI per arm:
+        arm a_mean a_sd mass_past_lag30
+ Correct SI    7.5 3.40         3.2e-05
+  Mean -60%    3.0 3.40         7.3e-04
+  Mean +60%   12.0 3.40         4.7e-05
+    SD -60%    7.5 1.36         0.0e+00
+    SD +60%    7.5 5.44         4.1e-03
+
+--- Correct SI (assumed mean 7.50, sd 3.40) ---
+  EpiEstim                  0.8 s   failed replicates: 0
+  EpiFilter (smoother)      4.2 s   failed replicates: 0
+  EpiLPS (MAP)              0.6 s   failed replicates: 0
+  EpiLPS (MALA)            39.2 s   failed replicates: 0
+
+--- Mean -60% (assumed mean 3.00, sd 3.40) ---
+  EpiEstim                  0.8 s   failed replicates: 0
+  EpiFilter (smoother)      2.7 s   failed replicates: 0
+  EpiLPS (MAP)              0.6 s   failed replicates: 0
+  EpiLPS (MALA)            39.9 s   failed replicates: 0
+
+--- Mean +60% (assumed mean 12.00, sd 3.40) ---
+  EpiEstim                  0.8 s   failed replicates: 0
+  EpiFilter (smoother)      2.7 s   failed replicates: 0
+  EpiLPS (MAP)              0.6 s   failed replicates: 0
+  EpiLPS (MALA)            39.1 s   failed replicates: 0
+
+--- SD -60% (assumed mean 7.50, sd 1.36) ---
+  EpiEstim                  0.8 s   failed replicates: 0
+  EpiFilter (smoother)      2.7 s   failed replicates: 0
+  EpiLPS (MAP)              0.6 s   failed replicates: 0
+  EpiLPS (MALA)            40.9 s   failed replicates: 0
+
+--- SD +60% (assumed mean 7.50, sd 5.44) ---
+  EpiEstim                  0.9 s   failed replicates: 0
+  EpiFilter (smoother)      2.6 s   failed replicates: 0
+  EpiLPS (MAP)              0.6 s   failed replicates: 0
+  EpiLPS (MALA)            40.4 s   failed replicates: 0
+
+Common burn-in: scored from day 13 (latest first-estimated day; set by EpiEstim / Mean +60%)
+
+Metrics over the scored window (days 13-100):
+            estimator        arm      bias    rmse coverage ci_width n_failed
+             EpiEstim Correct SI  0.000305  0.0458    0.952    0.178        0
+ EpiFilter (smoother) Correct SI -0.000319  0.0347    0.980    0.153        0
+         EpiLPS (MAP) Correct SI  0.056800  0.3000    0.902    0.442        0
+        EpiLPS (MALA) Correct SI  0.055500  0.3000    0.917    0.449        0
+             EpiEstim  Mean -60% -0.121000  0.1440    0.386    0.162        0
+ EpiFilter (smoother)  Mean -60% -0.122000  0.1410    0.379    0.140        0
+         EpiLPS (MAP)  Mean -60% -0.119000  0.1420    0.401    0.173        0
+        EpiLPS (MALA)  Mean -60% -0.119000  0.1430    0.396    0.178        0
+             EpiEstim  Mean +60%  0.130000  0.1590    0.430    0.194        0
+ EpiFilter (smoother)  Mean +60%  0.130000  0.1550    0.416    0.166        0
+         EpiLPS (MAP)  Mean +60%  2.180000 13.4000    0.697    1.760        0
+        EpiLPS (MALA)  Mean +60%  2.180000 13.4000    0.709    1.770        0
+             EpiEstim    SD -60%  0.007660  0.0530    0.932    0.179        0
+ EpiFilter (smoother)    SD -60%  0.007450  0.0430    0.961    0.154        0
+         EpiLPS (MAP)    SD -60%  0.227000  1.7000    0.926    0.635        0
+        EpiLPS (MALA)    SD -60%  0.226000  1.7000    0.940    0.643        0
+             EpiEstim    SD +60% -0.005560  0.0482    0.937    0.177        0
+ EpiFilter (smoother)    SD +60% -0.008810  0.0375    0.966    0.152        0
+         EpiLPS (MAP)    SD +60%  0.035600  0.1970    0.872    0.358        0
+        EpiLPS (MALA)    SD +60%  0.034000  0.1970    0.884    0.365        0
+
+Wrote results_si_misspec/si_misspec_plots.pdf 
+Correct-SI arm reproduces results/rt_trajectory_summary.csv for all four estimators.
+Every estimator fitted every epidemic under every arm.
+All checks passed.
+Rscript run_si_misspec.R  2157.66s user 82.08s system 992% cpu 3:45.66 total

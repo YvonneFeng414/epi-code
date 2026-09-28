@@ -1,0 +1,212 @@
+
+===== EpiFilter under SI misspecification (Poisson data) =====
+True SI: realised mean/sd 7.4992 / 3.4215 (requested 7.5 / 3.4), lags 0-30
+Grid: R in [0.01, 10], m = 1000 (spacing 0.0100), eta = 0.10
+
+Reporting hole(s) removed from the common range:
+  day 109 (2020-07-08): 0 reported cases
+  T: 254 -> 253
+Truth: EpiFilter smoothed fit, 253 days, Rt 0.440 to 2.740 (scored 0.440 to 2.740)
+Seeding: I0 = 2000 on day 1
+Filter runs from day 8; scoring days 2-253 (252 days), 100 replicates
+
+65 unique SI settings (5 families x 13 moment settings) x 100 replicates
+  = 6500 EpiFilter runs, each scored on both arms
+
+10 setting(s) miss the requested moments by more than 0.25. They are
+fitted and reported, but grid_value overstates how wrong the SI really is,
+so read them off realised_mean / realised_sd:
+      family assumed_mean assumed_sd realised_mean realised_sd moment_drift
+   gamma_bin          3.0       3.40         3.757       3.417       0.7570
+ gamma_discr          7.5       5.44         7.386       5.157       0.2829
+       lnorm          3.0       3.40         3.156       3.092       0.3076
+       lnorm          7.5       4.76         7.398       4.430       0.3301
+       lnorm          7.5       5.44         7.297       4.796       0.6441
+        unif          3.0       3.40         4.709       2.429       1.7087
+        unif          4.5       3.40         5.449       2.848       0.9495
+        unif          7.5       4.76         8.128       4.402       0.6283
+        unif          7.5       5.44         8.719       4.745       1.2186
+     weibull          3.0       3.40         3.691       3.405       0.6909
+
+simulated 100 / 100 replicates (0 diverged, 0 went extinct), median final-day incidence 446
+fitting done in 862 s
+
+===== smoother | gamma_discr | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.420     0.8320      0.001776      0.2607
+       2.04         7.500       2.080     0.8845      0.001691      0.2605
+       2.72         7.500       2.750     0.9181      0.001544      0.2601
+       3.40         7.499       3.421     0.9325      0.001531      0.2597
+       4.08         7.491       4.071     0.9301      0.001639      0.2591
+       4.76         7.458       4.660     0.9202      0.001696      0.2586
+       5.44         7.386       5.157     0.9005      0.001791      0.2580
+      Bias    RMSE half_over_sd         correct
+  0.005244 0.11854          NaN                
+  0.004364 0.08843          NaN                
+  0.003227 0.07840          NaN                
+  0.001161 0.07565          NaN   <- correct SI
+ -0.001594 0.07645          NaN                
+ -0.004703 0.08023          NaN                
+ -0.007907 0.08626          NaN                
+
+===== smoother | gamma_discr | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         2.976       3.300     0.5724      0.002147      0.2580
+        4.5         4.495       3.405     0.6870      0.002400      0.2581
+        6.0         5.998       3.418     0.8367      0.002146      0.2588
+        7.5         7.499       3.421     0.9325      0.001531      0.2597
+        9.0         8.999       3.422     0.8225      0.002351      0.2610
+       10.5        10.499       3.422     0.6867      0.003000      0.2631
+       12.0        11.999       3.422     0.5767      0.003176      0.2618
+      Bias    RMSE half_over_sd         correct
+ -0.020833 0.21527          NaN                
+ -0.017176 0.16099          NaN                
+ -0.009610 0.10689          NaN                
+  0.001161 0.07565          NaN   <- correct SI
+  0.015844 0.10802          NaN                
+  0.038252 0.19899          NaN                
+  0.053376 0.28105          NaN                
+
+===== filter | gamma_discr | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.420     0.8542      0.001897      0.3451
+       2.04         7.500       2.080     0.9025      0.001787      0.3444
+       2.72         7.500       2.750     0.9332      0.001570      0.3439
+       3.40         7.499       3.421     0.9452      0.001568      0.3433
+       4.08         7.491       4.071     0.9484      0.001558      0.3426
+       4.76         7.458       4.660     0.9433      0.001595      0.3418
+       5.44         7.386       5.157     0.9308      0.001692      0.3411
+     Bias   RMSE half_over_sd         correct
+ 0.016955 0.1855          NaN                
+ 0.014858 0.1721          NaN                
+ 0.013245 0.1685          NaN                
+ 0.011130 0.1669          NaN   <- correct SI
+ 0.008480 0.1662          NaN                
+ 0.005626 0.1663          NaN                
+ 0.002682 0.1675          NaN                
+
+===== filter | gamma_discr | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         2.976       3.300     0.6265      0.002062      0.3423
+        4.5         4.495       3.405     0.7431      0.002070      0.3421
+        6.0         5.998       3.418     0.8749      0.002051      0.3425
+        7.5         7.499       3.421     0.9452      0.001568      0.3433
+        9.0         8.999       3.422     0.8425      0.002250      0.3444
+       10.5        10.499       3.422     0.7193      0.002654      0.3464
+       12.0        11.999       3.422     0.6144      0.002979      0.3481
+      Bias   RMSE half_over_sd         correct
+ -0.006331 0.2412          NaN                
+ -0.003946 0.2037          NaN                
+  0.002063 0.1755          NaN                
+  0.011130 0.1669          NaN   <- correct SI
+  0.024063 0.1888          NaN                
+  0.043940 0.2543          NaN                
+  0.062936 0.3340          NaN                
+
+==============================================================
+FAMILY COMPARISON at the true moments (mean 7.5, sd 3.4)
+==============================================================
+
+--- smoother ---
+      family realised_mean realised_sd lag1_mass max_lag_used Coverage95
+ gamma_discr         7.499       3.421  0.001266           30     0.9325
+   gamma_bin         7.500       3.411  0.004096           30     0.9319
+       lnorm         7.493       3.384  0.000227           30     0.9297
+     weibull         7.510       3.403  0.015875           30     0.9297
+        unif         7.500       3.402  0.000000           13     0.9230
+ MCSE_Coverage MeanCIWidth      Bias    RMSE dCoverage_vs_gamma_bin
+      0.001531      0.2597 0.0011614 0.07565              0.0006504
+      0.001490      0.2597 0.0008606 0.07604              0.0000000
+      0.001460      0.2598 0.0017992 0.07587             -0.0021545
+      0.001517      0.2595 0.0001703 0.07703             -0.0021951
+      0.001529      0.2597 0.0008122 0.07663             -0.0088211
+ dWidth_vs_gamma_bin
+           4.228e-05
+           0.000e+00
+           1.419e-04
+          -1.260e-04
+          -8.943e-06
+
+--- filter ---
+      family realised_mean realised_sd lag1_mass max_lag_used Coverage95
+ gamma_discr         7.499       3.421  0.001266           30     0.9452
+   gamma_bin         7.500       3.411  0.004096           30     0.9457
+       lnorm         7.493       3.384  0.000227           30     0.9404
+     weibull         7.510       3.403  0.015875           30     0.9469
+        unif         7.500       3.402  0.000000           13     0.9309
+ MCSE_Coverage MeanCIWidth    Bias   RMSE dCoverage_vs_gamma_bin
+      0.001568      0.3433 0.01113 0.1669             -0.0004878
+      0.001541      0.3433 0.01092 0.1668              0.0000000
+      0.001618      0.3434 0.01170 0.1675             -0.0052846
+      0.001589      0.3431 0.01028 0.1666              0.0011789
+      0.001555      0.3432 0.01072 0.1681             -0.0147561
+ dWidth_vs_gamma_bin
+           2.602e-05
+           0.000e+00
+           1.695e-04
+          -1.207e-04
+          -2.683e-05
+
+Discretisation cost (gamma_discr - gamma_bin, same family, same moments):
+  smoother coverage +0.0007 | CI width +0.0000 | RMSE -0.0004
+  filter   coverage -0.0005 | CI width +0.0000 | RMSE +0.0001
+  A family difference of this size or smaller is not distinguishable from
+  the choice of discretisation alone.
+
+==============================================================
+SUMMARY: sensitivity over the same -80%..+80% relative error
+==============================================================
+  smoother gamma_discr vary_sd   at true moments 0.933 | coverage 0.832-0.933 (range 0.101) | width 0.258-0.261
+  smoother gamma_discr vary_mean at true moments 0.933 | coverage 0.572-0.933 (range 0.360) | width 0.258-0.263
+  smoother gamma_bin   vary_sd   at true moments 0.932 | coverage 0.829-0.932 (range 0.103) | width 0.258-0.261
+  smoother gamma_bin   vary_mean at true moments 0.932 | coverage 0.577-0.932 (range 0.355) | width 0.258-0.263
+  smoother lnorm       vary_sd   at true moments 0.930 | coverage 0.828-0.931 (range 0.103) | width 0.258-0.261
+  smoother lnorm       vary_mean at true moments 0.930 | coverage 0.576-0.930 (range 0.353) | width 0.258-0.263
+  smoother weibull     vary_sd   at true moments 0.930 | coverage 0.829-0.930 (range 0.100) | width 0.258-0.260
+  smoother weibull     vary_mean at true moments 0.930 | coverage 0.578-0.930 (range 0.351) | width 0.258-0.264
+  smoother unif        vary_sd   at true moments 0.923 | coverage 0.822-0.923 (range 0.101) | width 0.259-0.261
+  smoother unif        vary_mean at true moments 0.923 | coverage 0.579-0.923 (range 0.344) | width 0.259-0.264
+  filter   gamma_discr vary_sd   at true moments 0.945 | coverage 0.854-0.948 (range 0.094) | width 0.341-0.345
+  filter   gamma_discr vary_mean at true moments 0.945 | coverage 0.614-0.945 (range 0.331) | width 0.342-0.348
+  filter   gamma_bin   vary_sd   at true moments 0.946 | coverage 0.852-0.949 (range 0.098) | width 0.341-0.345
+  filter   gamma_bin   vary_mean at true moments 0.946 | coverage 0.615-0.946 (range 0.331) | width 0.342-0.348
+  filter   lnorm       vary_sd   at true moments 0.940 | coverage 0.849-0.946 (range 0.096) | width 0.342-0.345
+  filter   lnorm       vary_mean at true moments 0.940 | coverage 0.615-0.940 (range 0.326) | width 0.342-0.348
+  filter   weibull     vary_sd   at true moments 0.947 | coverage 0.852-0.948 (range 0.096) | width 0.341-0.345
+  filter   weibull     vary_mean at true moments 0.947 | coverage 0.618-0.947 (range 0.329) | width 0.342-0.348
+  filter   unif        vary_sd   at true moments 0.931 | coverage 0.847-0.931 (range 0.084) | width 0.342-0.345
+  filter   unif        vary_mean at true moments 0.931 | coverage 0.617-0.931 (range 0.314) | width 0.342-0.349
+
+At the correct SI (control point):
+  smoother coverage 0.9325 | CI width 0.2597 | half/sd NaN
+  filter   coverage 0.9452 | CI width 0.3433 | half/sd NaN
+  (half/sd is the interval half-width over the estimator's actual spread
+   across replicates; 1.96 is calibrated, above that is conservative)
+
+==============================================================
+eta sensitivity at the CORRECT SI
+==============================================================
+  eta      arm Coverage95 MCSE_Coverage MeanCIWidth       Bias    RMSE
+ 0.05 smoother     0.7195     0.0020744      0.1915 -0.0028919 0.10020
+ 0.05   filter     0.8045     0.0025913      0.2793  0.0073931 0.17402
+ 0.10 smoother     0.9325     0.0015308      0.2597  0.0011614 0.07565
+ 0.10   filter     0.9452     0.0015680      0.3433  0.0111301 0.16691
+ 0.20 smoother     0.9731     0.0010746      0.3306  0.0019423 0.07866
+ 0.20   filter     0.9676     0.0011526      0.3967  0.0127244 0.17054
+ 0.35 smoother     0.9708     0.0009347      0.3757  0.0001533 0.09237
+ 0.35   filter     0.9652     0.0010485      0.4231  0.0121764 0.17607
+ 0.50 smoother     0.9664     0.0010757      0.3965 -0.0012329 0.10041
+ 0.50   filter     0.9628     0.0010958      0.4323  0.0114756 0.17880
+ half_over_sd
+          NaN
+          NaN
+          NaN
+          NaN
+          NaN
+          NaN
+          NaN
+          NaN
+          NaN
+          NaN
+
+Wrote results to combined/experiments/score-from-2-rmax5/epifilter/

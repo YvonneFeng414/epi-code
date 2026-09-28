@@ -1,0 +1,38 @@
+Mode: FULL | n_sim = 100 | cores = 11 | output: results/
+Simulated 100 Poisson epidemics; final-day incidence median 2763 (range 2459-3073)
+Simulated 100 negative-binomial (rho = 20) epidemics; final-day incidence median 2478 (range 1078-5699)
+
+Fitting EpiEstim ...
+There were 50 or more warnings (use warnings() to see the first 50)
+Fitting EpiFilter ...
+Fitting EpiLPS (MAP) ...
+Fitting EpiLPS (MALA) ...
+  EpiEstim                   0.8 s   failed replicates: 0
+  EpiFilter (smoother)       4.7 s   failed replicates: 0
+  EpiLPS (MAP)               0.6 s   failed replicates: 0
+  EpiLPS (MALA)             40.2 s   failed replicates: 0
+
+Metrics:
+            estimator data_model n_failed secs mean_rho           window
+             EpiEstim    poisson        0  0.8       NA own days (8-100)
+             EpiEstim    poisson        0  0.8       NA   common (8-100)
+ EpiFilter (smoother)    poisson        0  4.7       NA own days (8-100)
+ EpiFilter (smoother)    poisson        0  4.7       NA   common (8-100)
+         EpiLPS (MAP)     negbin        0  0.6    21.91 own days (8-100)
+         EpiLPS (MAP)     negbin        0  0.6    21.91   common (8-100)
+        EpiLPS (MALA)     negbin        0 40.2    22.36 own days (8-100)
+        EpiLPS (MALA)     negbin        0 40.2    22.36   common (8-100)
+ n_cells       bias     rmse coverage ci_width
+    9300  0.0003524  0.04685   0.9518   0.1815
+    9300  0.0003524  0.04685   0.9518   0.1815
+    9300 -0.0002355  0.03522   0.9809   0.1587
+    9300 -0.0002355  0.03522   0.9809   0.1587
+    9300 12.5000000 88.20000   0.8537   4.2160
+    9300 12.5000000 88.20000   0.8537   4.2160
+    9300 12.5200000 88.30000   0.8677   4.2900
+    9300 12.5200000 88.30000   0.8677   4.2900
+There were 24 warnings (use warnings() to see them)
+
+Wrote results/rt_trajectory_plots.pdf 
+All checks passed: true Rt path matches, every estimator fitted every replicate.
+Rscript run_trajectories.R  445.85s user 20.18s system 962% cpu 48.444 total

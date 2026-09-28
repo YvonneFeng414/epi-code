@@ -1,0 +1,16 @@
+Truth: seed-aligned, 253 days, Rt 0.382 to 6.740
+Seeding: I0 = 500 on day 1; scoring days 14-253 (240 days)
+Scored truth spans 0.382 to 2.148
+simulated 100 / 100 replicates (0 diverged, 0 went extinct)
+fitting 13 settings x 100 replicates on 8 cores............. done in 7 s
+
+Control point and the +/-60% arms:
+  scenario rel_error Coverage   Bias   RMSE  Width
+ vary_mean       0.6   0.8267 0.0470 0.3006 0.8786
+ vary_mean      -0.6   0.8377 0.0287 0.2974 0.8805
+   vary_sd      -0.6   0.9183 0.0358 0.2678 0.8856
+   vary_sd       0.0   0.9517 0.0244 0.2419 0.8730
+ vary_mean       0.0   0.9517 0.0244 0.2419 0.8730
+   vary_sd       0.6   0.9439 0.0183 0.2435 0.8660
+
+Wrote combined/experiments/I0-500/epiestim_arm_by_day.csv and _metrics.csv

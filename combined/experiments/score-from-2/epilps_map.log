@@ -1,0 +1,265 @@
+
+===== EpiLPS under SI misspecification (NegBin data) =====
+True SI: realised mean/sd 7.4992 / 3.4215 (requested 7.5 / 3.4), lags 0-30
+Reporting hole(s) removed: 2020-07-08
+Truth: true_R_epilps, 253 days, Rt 0.619 to 7.802
+Seeding: I0 = 2000 on day 1 (NegBin draws from day 2)
+Scoring days 2-253 (252 days), 100 replicates, shared across all SI settings
+
+NegBin overdispersion estimated on the observed series: rho = 17.36
+  at mu = 1000: SD 242 (NegBin) vs 32 (Poisson), 7.7x the noise
+
+simulated 100 / 100 replicates (0 diverged, 0 went extinct)
+median final-day incidence 314
+
+65 unique SI settings to fit (5 families x 13 moment settings;
+  70 rows reported, the point the two sweeps share is fitted once per family)
+100 replicates x 65 settings = 6500 EpiLPS fits
+
+10 setting(s) miss the requested moments by more than 0.25.
+These are FITTED AND REPORTED, but their grid_value overstates how wrong
+the assumed SI really is, so read them off realised_mean / realised_sd:
+      family assumed_mean assumed_sd realised_mean realised_sd moment_drift
+   gamma_bin          3.0       3.40         3.757       3.417       0.7570
+ gamma_discr          7.5       5.44         7.386       5.157       0.2829
+       lnorm          3.0       3.40         3.156       3.092       0.3076
+       lnorm          7.5       4.76         7.398       4.430       0.3301
+       lnorm          7.5       5.44         7.297       4.796       0.6441
+        unif          3.0       3.40         4.709       2.429       1.7087
+        unif          4.5       3.40         5.449       2.848       0.9495
+        unif          7.5       4.76         8.128       4.402       0.6283
+        unif          7.5       5.44         8.719       4.745       1.2186
+     weibull          3.0       3.40         3.691       3.405       0.6909
+
+fitting done in 92 s
+
+===== gamma_discr | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.420     0.8658      0.004390   1.086e+09
+       2.04         7.500       2.080     0.8635      0.004613   7.840e+02
+       2.72         7.500       2.750     0.8557      0.004784   4.267e+00
+       3.40         7.499       3.421     0.8474      0.004984   5.475e-01
+       4.08         7.491       4.071     0.8311      0.005312   2.992e-01
+       4.76         7.458       4.660     0.8063      0.005698   2.443e-01
+       5.44         7.386       5.157     0.7833      0.006100   2.198e-01
+      Bias      RMSE                 flag
+ 1.274e+10 2.022e+11                     
+ 9.175e+03 1.454e+05                     
+ 4.611e+01 7.176e+02                     
+ 3.339e+00 5.003e+01     <- generating SI
+ 6.909e-01 1.018e+01                     
+ 2.166e-01 3.415e+00                     
+ 7.008e-02 1.463e+00   <- moments drifted
+
+===== gamma_discr | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         2.976       3.300     0.2237      0.003493   9.260e-02
+        4.5         4.495       3.405     0.4622      0.006505   1.454e-01
+        6.0         5.998       3.418     0.7175      0.007056   2.151e-01
+        7.5         7.499       3.421     0.8474      0.004984   5.475e-01
+        9.0         8.999       3.422     0.8369      0.006358   9.386e+00
+       10.5        10.499       3.422     0.7424      0.008388   7.213e+02
+       12.0        11.999       3.422     0.6444      0.009013   1.610e+05
+       Bias      RMSE               flag
+ -8.820e-02 5.041e-01                   
+ -5.335e-02 3.521e-01                   
+  1.812e-01 3.202e+00                   
+  3.339e+00 5.003e+01   <- generating SI
+  1.045e+02 1.625e+03                   
+  8.415e+03 1.330e+05                   
+  1.886e+06 2.992e+07                   
+
+===== gamma_bin | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.390     0.8660      0.004362   1.882e+08
+       2.04         7.500       2.060     0.8638      0.004598   1.482e+02
+       2.72         7.500       2.735     0.8565      0.004792   1.291e+00
+       3.40         7.500       3.411     0.8490      0.004964   3.501e-01
+       4.08         7.498       4.070     0.8338      0.005239   2.610e-01
+       4.76         7.494       4.676     0.8092      0.005780   2.329e-01
+       5.44         7.486       5.197     0.7865      0.006150   2.173e-01
+      Bias      RMSE                  flag
+ 2.207e+09 3.504e+10                      
+ 1.725e+03 2.724e+04                      
+ 1.152e+01 1.733e+02                      
+ 1.090e+00 1.528e+01   <- family reference
+ 2.663e-01 3.739e+00                      
+ 8.596e-02 1.440e+00                      
+ 2.089e-02 6.939e-01                      
+
+===== gamma_bin | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         3.757       3.417     0.3406      0.005507      0.1188
+        4.5         4.642       3.363     0.4907      0.006727      0.1507
+        6.0         6.010       3.403     0.7205      0.006986      0.2053
+        7.5         7.500       3.411     0.8490      0.004964      0.3501
+        9.0         9.000       3.411     0.8368      0.006300      2.1346
+       10.5        10.500       3.411     0.7429      0.008367     78.7033
+       12.0        11.999       3.410     0.6448      0.008987   8942.2662
+       Bias      RMSE                  flag
+ -7.970e-02 4.309e-01    <- moments drifted
+ -5.562e-02 3.138e-01                      
+  6.522e-02 1.417e+00                      
+  1.090e+00 1.528e+01   <- family reference
+  2.033e+01 3.030e+02                      
+  9.017e+02 1.404e+04                      
+  1.044e+05 1.649e+06                      
+
+===== lnorm | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.390     0.8659      0.004378   8.405e+14
+       2.04         7.500       2.060     0.8631      0.004556   1.781e+05
+       2.72         7.500       2.733     0.8552      0.004801   6.480e+01
+       3.40         7.493       3.384     0.8463      0.004970   1.827e+00
+       4.08         7.463       3.960     0.8300      0.005285   4.437e-01
+       4.76         7.398       4.430     0.8131      0.005711   2.836e-01
+       5.44         7.297       4.796     0.7909      0.005926   2.389e-01
+      Bias      RMSE                 flag
+ 9.853e+15 1.564e+17                     
+ 2.088e+06 3.315e+07                     
+ 7.541e+02 1.193e+04                     
+ 1.810e+01 2.806e+02                     
+ 2.294e+00 3.449e+01                     
+ 6.145e-01 9.192e+00   <- moments drifted
+ 2.290e-01 3.651e+00   <- moments drifted
+
+===== lnorm | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         3.156       3.092     0.2525      0.003957   1.012e-01
+        4.5         4.484       3.288     0.4622      0.006356   1.472e-01
+        6.0         5.988       3.359     0.7174      0.007070   2.366e-01
+        7.5         7.493       3.384     0.8463      0.004970   1.827e+00
+        9.0         8.995       3.393     0.8374      0.006320   2.966e+02
+       10.5        10.495       3.397     0.7440      0.008468   3.571e+05
+       12.0        11.995       3.397     0.6459      0.009027   3.311e+09
+       Bias      RMSE                 flag
+ -8.400e-02 4.713e-01   <- moments drifted
+ -4.294e-02 4.113e-01                     
+  4.129e-01 6.648e+00                     
+  1.810e+01 2.806e+02                     
+  3.465e+03 5.485e+04                     
+  4.185e+06 6.643e+07                     
+  3.881e+10 6.162e+11                     
+
+===== weibull | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.390     0.8669      0.004340     19.1499
+       2.04         7.500       2.060     0.8633      0.004548      0.7881
+       2.72         7.502       2.733     0.8595      0.004857      0.3468
+       3.40         7.510       3.403     0.8535      0.004922      0.2750
+       4.08         7.533       4.068     0.8388      0.005165      0.2472
+       4.76         7.571       4.710     0.8140      0.005786      0.2303
+       5.44         7.598       5.272     0.7851      0.006188      0.2178
+      Bias      RMSE flag
+ 2.127e+02 3240.5376     
+ 5.425e+00   75.2278     
+ 9.020e-01   11.6119     
+ 2.896e-01    3.7170     
+ 1.169e-01    1.6624     
+ 4.571e-02    0.8827     
+ 8.757e-03    0.5190     
+
+===== weibull | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         3.691       3.405     0.3299      0.005417      0.1166
+        4.5         4.715       3.347     0.5051      0.006843      0.1533
+        6.0         6.051       3.381     0.7264      0.006922      0.2030
+        7.5         7.510       3.403     0.8535      0.004922      0.2750
+        9.0         9.002       3.410     0.8378      0.006245      0.4266
+       10.5        10.500       3.412     0.7418      0.008323      0.9219
+       12.0        12.000       3.412     0.6454      0.008944      3.0529
+     Bias     RMSE                 flag
+ -0.08042   0.4366   <- moments drifted
+ -0.05548   0.3055                     
+  0.02298   0.8035                     
+  0.28963   3.7170                     
+  1.30732  15.9666                     
+  5.69512  72.6713                     
+ 26.79060 360.4227                     
+
+===== unif | vary_sd (assumed mean held at the true 7.5) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+       1.36         7.500       1.416     0.8807      0.004448      0.2742
+       2.04         7.500       2.080     0.8767      0.004598      0.2697
+       2.72         7.500       2.741     0.8706      0.004873      0.2617
+       3.40         7.500       3.402     0.8678      0.005129      0.2506
+       4.08         7.536       4.054     0.8574      0.005236      0.2382
+       4.76         8.128       4.402     0.8548      0.005740      0.2504
+       5.44         8.719       4.745     0.8249      0.007089      0.2617
+    Bias   RMSE                 flag
+ 0.03538 0.7022                     
+ 0.03654 0.6579                     
+ 0.03494 0.6047                     
+ 0.02956 0.5383                     
+ 0.02443 0.5094                     
+ 0.03943 0.5908   <- moments drifted
+ 0.05486 0.6761   <- moments drifted
+
+===== unif | vary_mean (assumed sd held at the true 3.4) =====
+ grid_value realised_mean realised_sd Coverage95 MCSE_Coverage MeanCIWidth
+        3.0         4.709       2.429     0.5237      0.006357      0.1649
+        4.5         5.449       2.848     0.6445      0.007510      0.1865
+        6.0         6.205       3.293     0.7514      0.006628      0.2067
+        7.5         7.500       3.402     0.8678      0.005129      0.2506
+        9.0         9.000       3.423     0.8458      0.006366      0.3191
+       10.5        10.500       3.402     0.7497      0.008470      0.3442
+       12.0        12.000       3.423     0.6550      0.009021      0.4221
+      Bias   RMSE                 flag
+ -0.040248 0.2862   <- moments drifted
+ -0.024588 0.2981   <- moments drifted
+ -0.007832 0.3522                     
+  0.029561 0.5383                     
+  0.140182 1.7412                     
+  0.081881 0.7625                     
+  0.190381 1.9769                     
+
+==============================================================
+FAMILY COMPARISON at the true moments (mean 7.5, sd 3.4)
+==============================================================
+      family realised_mean realised_sd lag1_mass max_lag_used Coverage95
+ gamma_discr         7.499       3.421  0.001266           30     0.8474
+   gamma_bin         7.500       3.411  0.004096           30     0.8490
+       lnorm         7.493       3.384  0.000227           30     0.8463
+     weibull         7.510       3.403  0.015875           30     0.8535
+        unif         7.500       3.402  0.000000           13     0.8678
+ MCSE_Coverage MeanCIWidth     Bias     RMSE dCoverage_vs_gamma_bin
+      0.004984      0.5475  3.33898  50.0278              -0.001548
+      0.004964      0.3501  1.09043  15.2771               0.000000
+      0.004970      1.8272 18.09571 280.5582              -0.002619
+      0.004922      0.2750  0.28963   3.7170               0.004484
+      0.005129      0.2506  0.02956   0.5383               0.018880
+ dWidth_vs_gamma_bin
+             0.19737
+             0.00000
+             1.47710
+            -0.07511
+            -0.09949
+
+Discretisation cost (gamma_discr - gamma_bin, same family, same moments):
+  coverage -0.0015 | CI width +0.1974 | RMSE +34.7507
+  Any family difference of this size or smaller is within the noise the
+  choice of discretisation alone introduces, and should not be read as a
+  family effect.
+
+==============================================================
+CONTROL POINT vs epilps_selfcheck.R nbinom arm
+  this script  : 0.8474 (MCSE 0.0050)
+  selfcheck    : 0.7538
+  difference   : +0.0937
+  (not expected to match exactly: the true SI is built at lag 60 here and
+   lag 30 there, which perturbs the simulated series slightly)
+==============================================================
+
+Sensitivity over the same -80%..+80% relative error:
+  gamma_discr vary_sd    coverage 0.783 to 0.866 (range 0.083) | bias +0.0701 to +12735751910.0756 (range 12735751910.0056)
+  gamma_discr vary_mean  coverage 0.224 to 0.847 (range 0.624) | bias -0.0882 to +1886219.3925 (range 1886219.4807)
+  gamma_bin   vary_sd    coverage 0.787 to 0.866 (range 0.080) | bias +0.0209 to +2206914629.2291 (range 2206914629.2083)
+  gamma_bin   vary_mean  coverage 0.341 to 0.849 (range 0.508) | bias -0.0797 to +104366.3462 (range 104366.4259)
+  lnorm       vary_sd    coverage 0.791 to 0.866 (range 0.075) | bias +0.2290 to +9853346833037032.0000 (range 9853346833037032.0000)
+  lnorm       vary_mean  coverage 0.252 to 0.846 (range 0.594) | bias -0.0840 to +38813037297.4530 (range 38813037297.5370)
+  weibull     vary_sd    coverage 0.785 to 0.867 (range 0.082) | bias +0.0088 to +212.6862 (range 212.6774)
+  weibull     vary_mean  coverage 0.330 to 0.853 (range 0.524) | bias -0.0804 to +26.7906 (range 26.8710)
+  unif        vary_sd    coverage 0.825 to 0.881 (range 0.056) | bias +0.0244 to +0.0549 (range 0.0304)
+  unif        vary_mean  coverage 0.524 to 0.868 (range 0.344) | bias -0.0402 to +0.1904 (range 0.2306)
+
+Wrote results to combined/experiments/score-from-2/epilps_map/
